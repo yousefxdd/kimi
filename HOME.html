@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kimi Viramo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Startseite -->
+    <section id="home">
+        <h1>Wilkommen</h1>
+       
+        <!-- Placeholder für Willkommensvideo oder GIF -->
+    </section>
+    <section id="name">
+        <h1>Kimi Viramo</h1>
+       
+        <!-- Placeholder für Willkommensvideo oder GIF -->
+    </section>
+
+    <section class="countdownn">
+        <h1>Schulsprecherwahl:</h1>
+        <div id="countdown"></div>
+
+    </section>
+    
+    <!-- Über Kimi -->
+    <section id="about">
+        <img src="Bildschirmfoto 2023-09-29 um 15.56.27.png" alt="">
+        <h2>ÜBER Kimi</h2>
+        <h2><img src="31igObw4r1L._AC_UF894,1000_QL80_.jpg" ></h2>
+        
+        <h2>Name: KIMI Viramo</h2>
+        <h2>Geburtsdatum: 25.08.2005</h2>
+        <h2>Klasse: 5DK</h2>
+        <h2>Pronounces: HE/HIM</h2>
+        <h2>Größe: 192 cm</h2>
+        <h2>Schwerpunkt: FIRI</h2>
+        <h2>Besonderheiten: Qualitätsmanagment</h2>
+        <h2>Hobbys: Fußball</h2>
+        <h2></h2>
+        .
+        <!-- Placeholder für Biografie und Anekdoten -->
+    </section>
+    
+    <!-- Wahlprogramm -->
+    <section id="programm">
+        <h2>EURE Wünsche</h2>
+        <!-- Wahlprogramm -->
+        <section id="program">
+            <!-- Placeholder für Wahlprogramm -->
+
+            <!-- Wünsche und Vorschläge -->
+            <div id="wishes-section">
+                <div class="group">
+                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                        <g>
+                            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                        </g>
+                    </svg>
+                    <input id="wish-input" placeholder="Ihr Wunsch..." type="search" class="input" type="text">
+                </div>
+                <button id="wish-send">Senden</button>
+                <hr>
+                <div id="wish-list"></div>
+            </div>
+        </section>
+
+        <!-- Placeholder für Wahlprogramm -->
+    </section>
+    
+    <!-- Erfolge und Qualifikationen -->
+    <section id="achievements">
+        <h2>Achievements and Qualifications</h2>
+        <!-- Placeholder für Erfolge und Qualifikationen -->
+    </section>
+    
+    <!-- Zeugnisse -->
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <!-- Placeholder für Zeugnisse -->
+    </section>
+
+    <!-- Interaktive Features -->
+    <section id="interactive">
+        <h2>Interactive Features</h2>
+        <!-- Placeholder für interaktive Features wie Umfragen oder Quizze -->
+    </section>
+
+    <!-- Kontakt und Social Media -->
+    <section id="contact">
+        <h2>Contact and Social Media</h2>
+        <!-- Placeholder für Kontaktinformationen und Social Media-Links -->
+    </section>
+
+    <!-- Blog -->
+    <section id="blog">
+        <h2>Blog</h2>
+        <!-- Placeholder für Blog-Beiträge -->
+    </section>
+
+    <!-- Coole Features -->
+    <section id="cool-features">
+        <!-- Live-Chat -->
+        <div id="live-chat">
+            <!-- Placeholder für Live-Chat -->
+        </div>
+
+        <!-- Musik-Playlist -->
+        <div id="music-playlist">
+            <!-- Placeholder für Musik-Playlist -->
+        </div>
+    </section>
+    <div id="admin-panel" style="display:none;">
+        <button id="admin-delete">Alle Wünsche löschen (Admin)</button>
+      </div>
+      <button id="show-admin-panel">Admin-Bereich zeigen</button>
+      
+    
+    
+
+    <script>// Countdown bis zum Wahltag
+        // Countdown bis zum Wahltag
+function countdown() {
+    const electionDate = new Date("October 4, 2023 23:59:59").getTime();
+    const now = new Date().getTime();
+    const distance = electionDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "Die Wahl ist vorbei!";
+    }
+}
+
+// Update the countdown every 1 second
+const x = setInterval(countdown, 1000);
+
+// Wünsche und Vorschläge
+document.addEventListener('DOMContentLoaded', function() {
+    // Laden der gespeicherten Wünsche beim Laden der Seite
+    const savedWishes = JSON.parse(localStorage.getItem('wishes')) || [];
+    const wishList = document.getElementById('wish-list');
+    savedWishes.forEach(function(wish) {
+        const newWish = document.createElement('div');
+        newWish.textContent = wish;
+        wishList.appendChild(newWish);
+    });
+
+    // Event-Listener für den Senden-Button
+    document.getElementById('wish-send').addEventListener('click', function() {
+        const wishInput = document.getElementById('wish-input').value;
+
+        if (wishInput !== '') {
+            const newWish = document.createElement('div');
+            newWish.textContent = wishInput;
+            wishList.appendChild(newWish);
+            
+            // Wünsche im Local Storage speichern
+            savedWishes.push(wishInput);
+            localStorage.setItem('wishes', JSON.stringify(savedWishes));
+
+            // Eingabefeld leeren
+            document.getElementById('wish-input').value = '';
+        }
+    });
+});
+// Event-Listener für den Button, der das Admin-Panel zeigt
+document.getElementById('show-admin-panel').addEventListener('click', function() {
+    const password = prompt("kimiwirdsp");
+    
+    // Überprüfen, ob das eingegebene Passwort korrekt ist
+    if (password === "kimiwirdsp") {
+        document.getElementById('admin-panel').style.display = 'block';
+    } else {
+        alert("Falsches Passwort.");
+    }
+});
+
+// Event-Listener für den Admin-Button zum Löschen aller Wünsche
+document.getElementById('admin-delete').addEventListener('click', function() {
+    // Local Storage löschen
+    localStorage.removeItem('wishes');
+    
+    // Anzeige der Wünsche löschen
+    const wishList = document.getElementById('wish-list');
+    while (wishList.firstChild) {
+        wishList.removeChild(wishList.firstChild);
+    }
+});
+
+
+
+    </script>
+</body>
+</html>
